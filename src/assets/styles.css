@@ -1,4 +1,7 @@
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
     background-color: lightblue; /* Replace with your desired color */

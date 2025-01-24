@@ -12,8 +12,9 @@ defineProps({
     <header>
       <h1 class="mainText">{{ msg }}</h1>
     </header>
-    <button class="new-button">start now</button>
+    <button class="new-button" @click="$router.push('/signin')">start now</button>
   </div>
+
 
 </template>
 
@@ -25,12 +26,13 @@ defineProps({
   }
   
   .new-button{
-    max-width: 50%;
+    width: 50%;
     border-radius: 10px;
     font-size: 1.5rem;
     font-family: "DM Serif Text", serif;
     color: lightblue;
     background-color: white;
+    border-color: white;
   }
 
   .mainText {

@@ -84,13 +84,11 @@
   };
   </script>
   
-  <style>
+  <style scoped>
   .calculator {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
     font-family: Arial, sans-serif;
   }
   
@@ -117,8 +115,8 @@
   button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
-    color: white;
+    background-color: white;
+    color: lightblue;
     border: none;
     border-radius: 4px;
     cursor: pointer;
