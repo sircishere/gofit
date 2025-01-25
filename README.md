@@ -1,4 +1,2 @@
-MTSFitness
-
-Joint project between me and sircishere. Platform for users to see exercise options and calculate their macros. Must pay to access content. 
-
+# gofit
+Personalized version of the joint fitness app I'm creating with Kevin Bonet
