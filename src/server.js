@@ -1,7 +1,7 @@
 import express from "express";
 import axios from "axios";
 import mysql from "mysql2";
-import 'dotenv/config'
+import 'dotenv/config';
 
 const app = express();
 
@@ -13,16 +13,31 @@ const config = {
   baseURL: process.env.BASE_URL,
   clientID: process.env.AUTH0_CLIENT_ID,
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
-  secret: process.env.SESSION_SECRET
+  secret: process.env.SESSION_SECRET,
+  session: {
+    rolling: true,
+    cookie: { secure: false }  // Set to `true` if using HTTPS
+  }
 };
+
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out')
+
+  // res.send(req.oidc.isAuthenticated() ?   res.redirect(`http://localhost:5173/auth-success?token=${req.oidc.idToken}`)
+
+  res.redirect(`http://localhost:5173`);
+
 });
+
+app.get('/logout', (req, res) => {
+  const returnTo = encodeURIComponent('http://localhost:5173/logout-success'); 
+  res.redirect(`https://${process.env.AUTH0_ISSUER_BASE_URL}/v2/logout?client_id=${process.env.AUTH0_CLIENT_ID}&returnTo=${returnTo}`);
+});
+
 
 // Create a connection to the database
 const db = mysql.createConnection({
