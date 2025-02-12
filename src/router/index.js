@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import LogoutSuccess from '@/views/LogoutSuccess.vue'
 
 
 
@@ -28,6 +29,15 @@ const router = createRouter({
       path: '/signin',
       name: 'signin',
       component: () => import('../views/SignInView.vue')
+    },
+
+    { 
+      path: '/auth-success',
+      component: HomeView,
+    },
+
+    { path: '/logout-success',
+      component: LogoutSuccess 
     }
   ],
 })

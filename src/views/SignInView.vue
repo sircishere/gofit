@@ -6,21 +6,33 @@
     Sign in to your account
   </h1>
 
-    <h3 class="tag">username</h3>
-    <input class="sign_in_input">
-    <h3 class="tag">password</h3>
-    <input class="sign_in_input">
-  </div>
+  <button 
+      @click="redirectToLogin"    >
+      Login with OAuth
+    </button>  </div>
 
 
 
 
 </template>
 
-<script>
+<script setup>
+const redirectToLogin = () => {
+  window.location.href = "http://localhost:3000/login";
+};
 </script>
 
-<style>
+<style scoped>
+
+button {
+  color: lightblue;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  font-size: larger;
+  font-family: "DM Serif Text", serif;
+
+}
 
 .center{
   margin-left: 28%;
