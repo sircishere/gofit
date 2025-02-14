@@ -2,10 +2,14 @@ import express from "express";
 import axios from "axios";
 import mysql from "mysql2";
 import 'dotenv/config';
+import oidc from 'express-openid-connect';
+import session from 'express-session';
+import cors from 'cors';
 
 const app = express();
 
-import { auth } from 'express-openid-connect';
+
+const {auth, requiresAuth} = oidc;
 
 const config = {
   authRequired: process.env.AUTHREQUIRED,
@@ -20,17 +24,38 @@ const config = {
   }
 };
 
+app.use(cors({
+  origin: [
+    'http://localhost:5173'
+  ],
+  credentials: true,
+  exposedHeaders: ['set-cookie']
+}));
+
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 
+//retrieves the name of the user
+app.get('/getName',(req,res) => {
+  if (!req.oidc.isAuthenticated()) {
+    return res.status(401).json({ message: "Not authenticated" });
+  }
+  
+  res.json({ name: req.oidc.user.given_name }); // Send JSON response
+});
+
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {
-
   // res.send(req.oidc.isAuthenticated() ?   res.redirect(`http://localhost:5173/auth-success?token=${req.oidc.idToken}`)
 
   res.redirect(`http://localhost:5173`);
 
+});
+
+// The /profile route will show the user profile as JSON
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user, null, 2));
 });
 
 app.get('/logout', (req, res) => {
