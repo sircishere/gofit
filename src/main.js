@@ -17,5 +17,4 @@ app.use(pinia);  // Register Pinia here BEFORE using any store
 app.use(router)
 app.use(VueAxios, axios);
 
-
 app.mount('#app')

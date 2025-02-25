@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/FormView.vue'),
     },
     {
+      path: '/questionaire',
+      name: 'questionaire',
+      component: () => import('../views/QuestionaireView.vue'),
+    },
+    {
       path: '/signin',
       name: 'signin',
       component: () => import('../views/SignInView.vue')

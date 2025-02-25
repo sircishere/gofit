@@ -1,6 +1,19 @@
 <script setup>
+import { ref,onMounted } from 'vue'
 import HelloWorld from '../components/HelloWorld.vue'
+import axios from 'axios';
 
+let name = ref(null);
+
+onMounted( async () => {
+  //send if authenticated
+  try {
+    const response = await axios.get('http://localhost:3000/getName');
+    name.value = response.data.name; // Assign the fetched name
+  } catch (error) {
+    console.error("Error fetching name:", error);
+  }
+})
 </script>
 
 <template>
@@ -10,7 +23,9 @@ import HelloWorld from '../components/HelloWorld.vue'
         <img src="../assets/wiifit.png" alt="frickin wii fit girl" width="450" style="padding-top: 50px;">
       </div>
     </div>
-    <button class="new-but dm-serif-text-regular" @click="$router.push('/form')">Figure out your macros</button>
+    
+    <button v-if="name" class="new-but dm-serif-text-regular" @click="$router.push('/form')">Figure out your macros</button>
+    <div v-else></div>
 
 </template>
 
@@ -24,9 +39,5 @@ import HelloWorld from '../components/HelloWorld.vue'
       width: 50%;
       font-size: 1.5rem;
       margin-left: 25%;
-      background-color: white;
-      color: lightblue;
-      border-color: white;
-      border-radius: 5px;
     }    
 </style>

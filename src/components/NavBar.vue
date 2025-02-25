@@ -6,9 +6,9 @@
 
 <template>
     <h1>
-        <button class="dm-serif-text-regular" @click="$router.push('/')">MTSFitness</button>
+        <button class="dm-serif-text-regular" @click="$router.push('/')">GoFit</button>
         <button v-if="name" class="dm-serif-text-regular" >{{ name }}</button>
-        <button v-else class="dm-serif-text-regular" >Log In</button>
+        <button v-else class="dm-serif-text-regular" @click="$router.push('/signin')">Log In</button>
 
     </h1>
 </template>
