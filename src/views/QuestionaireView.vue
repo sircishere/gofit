@@ -2,32 +2,34 @@
 export default {
   data() {
     return {
-      isFading: false
     };
   },
   methods: {
-    fadeOut() {
-      this.isFading = true;
+
+    async submit(gender,weight,height) {
+
+      try {
+        const response = await fetch("localhost:3000/addUserInfo");
+        
+      }
+      catch {
+
+      }
+
     }
   }
 };
 </script>
 
 <template>
-  <div :class="['box', { 'fade-out': isFading }]">
+  <div class="box">
     <h1>Please input your Height</h1>
-    <input type="text">
-    <button @click="fadeOut">Next</button>
+    <input v-model="height" type="text">
+    <button>Next</button>
   </div>
 </template>
 
 <style scoped>
-
-
-.fade-out {
-    opacity : 0;
-    transition: opacity 1s ease-out
-}
 
 .box {
   align-items: center;

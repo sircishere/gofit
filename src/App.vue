@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/NavBar.vue'
-import FormView from './views/FormView.vue'
 import { ref,onMounted } from 'vue'
 import axios from 'axios';
 
@@ -20,7 +19,8 @@ onMounted( async () => {
 </script>
 
 <template>
-  <Navbar :name="name"/>
+  <Navbar  :name="name"/>
+  <h1 class="pl-10"> This is my tailwind h1</h1>
   <RouterView />
 </template>
 
