@@ -17,10 +17,10 @@ onMounted( async () => {
 </script>
 
 <template>
-    <div class="container">
-        <HelloWorld style="flex-grow: 6;" msg="The Web's new fitness app!" />
-      <div style="flex-grow: 6;">
-        <img src="../assets/wiifit.png" alt="frickin wii fit girl" width="450" style="padding-top: 50px;">
+    <div class="flex flex-row justify-center">
+        <HelloWorld class="self-center" msg="The Web's new fitness app!" />
+      <div>
+        <img src="../assets/wiifit.png" alt="frickin wii fit girl" width="450" class="pt-20" >
       </div>
     </div>
     
@@ -30,10 +30,7 @@ onMounted( async () => {
 </template>
 
 <style scoped>
-    .container {
-      display: flex;
-      justify-content: space-evenly;
-    }
+
 
     .new-but{
       width: 50%;

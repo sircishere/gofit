@@ -20,7 +20,6 @@ onMounted( async () => {
 
 <template>
   <Navbar  :name="name"/>
-  <h1 class="pl-10"> This is my tailwind h1</h1>
   <RouterView />
 </template>
 

@@ -8,22 +8,15 @@ defineProps({
 </script>
 
 <template>
-  <div class="yup">
+  <div class="text-center">
     <header>
-      <h1 class="mainText">{{ msg }}</h1>
+      <h1 class="text-6xl">{{ msg }}</h1>
     </header>
     <button class="new-button" @click="$router.push('/signin')">start now</button>
   </div>
-
-
 </template>
 
 <style scoped>
-  .yup {
-    height: 400px;
-    text-align: center;
-    padding-top: 200px;
-  }
   
   .new-button{
     width: 50%;
@@ -33,9 +26,5 @@ defineProps({
     color: lightblue;
     background-color: white;
     border-color: white;
-  }
-
-  .mainText {
-    font-size: 66px;
   }
 </style>
