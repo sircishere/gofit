@@ -20,6 +20,7 @@ onMounted( async () => {
 
 <template>
   <Navbar  :name="name"/>
+  <h1>test</h1>
   <RouterView />
 </template>
 
