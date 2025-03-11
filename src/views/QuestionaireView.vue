@@ -1,20 +1,35 @@
 <script>
+import { ref } from 'vue';
+import axios from "axios";
+
 export default {
   data() {
     return {
+      gender: ref(null),
+      weight: ref(null),
+      height: ref(null),
+      goal: ref(null)
     };
   },
   methods: {
 
-    async submit(gender,weight,height) {
+    submit(height,weight,gender,goal) {
 
-      try {
-        const response = await fetch("localhost:3000/addUserInfo");
-        
-      }
-      catch {
+      console.log("Gender: " + gender);
+      console.log("Height: " + height);
+      console.log("Weight: " + weight);
+      console.log("Goal: " + goal);
 
-      }
+      axios.post("http://localhost:3000/addUserInfo",{
+          height: height,
+          weight: weight,
+          gender: gender,
+          goal: goal
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error){
+        console.log(error);
+      });
 
     }
   }
@@ -22,33 +37,22 @@ export default {
 </script>
 
 <template>
-  <div class="box">
+  <div class="flex flex-col place-items-center h-screen justify-center">
     <h1>Please input your Height</h1>
-    <input v-model="height" type="text">
-    <button>Next</button>
+    <input class="bg-white" v-model="height" type="text">
+    <input class="bg-white" v-model="weight" type="text">
+    <input class="bg-white" v-model="gender" type="text">
+    <input class="bg-white" v-model="goal" type="text">
+
+    <button @click="submit(height,weight,gender,goal)">Next</button>
   </div>
 </template>
 
 <style scoped>
 
-.box {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  position: absolute;
-  top: 40%;
-  flex-direction: column;
-  width: 99%;
-}
-
 button {
   font-size: larger;
   width: 25%;
-  margin-top: 20px;
-}
-
-h1 {
-  margin-bottom: 20px;
 }
 
 input {

@@ -24,7 +24,4 @@ onMounted( async () => {
 </template>
 
 <style scoped>
-
-
-
 </style>
