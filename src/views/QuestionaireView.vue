@@ -15,11 +15,6 @@ export default {
 
     submit(height,weight,gender,goal) {
 
-      console.log("Gender: " + gender);
-      console.log("Height: " + height);
-      console.log("Weight: " + weight);
-      console.log("Goal: " + goal);
-
       axios.post("http://localhost:3000/addUserInfo",{
           height: height,
           weight: weight,
