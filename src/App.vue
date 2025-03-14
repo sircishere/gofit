@@ -19,8 +19,11 @@ onMounted( async () => {
 </script>
 
 <template>
-  <Navbar  :name="name"/>
-  <RouterView />
+    <Navbar  :name="name"/>
+    <Suspense>
+      <RouterView />
+    </Suspense>
+
 </template>
 
 <style scoped>

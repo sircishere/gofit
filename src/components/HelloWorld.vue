@@ -10,9 +10,8 @@ defineProps({
 <template>
   <div class="text-center">
     <header>
-      <h1 class="text-6xl">{{ msg }}</h1>
+      <h1 class="text-4xl">{{ msg }}</h1>
     </header>
-    <button class="new-button" @click="$router.push('/signin')">start now</button>
   </div>
 </template>
 

@@ -43,6 +43,11 @@ const router = createRouter({
 
     { path: '/logout-success',
       component: LogoutSuccess 
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue')
     }
   ],
 })

@@ -17,24 +17,17 @@ onMounted( async () => {
 </script>
 
 <template>
-    <div class="flex flex-row justify-center">
-        <HelloWorld class="self-center" msg="The Web's new fitness app!" />
-      <div>
-        <img src="../assets/wiifit.png" alt="frickin wii fit girl" width="450" class="pt-20" >
-      </div>
+    <div class="flex flex-col justify-center items-center mt-5">
+        <HelloWorld class="" msg="The Web's new fitness app!" />
+        <img src="../assets/wiifit.png" alt="frickin wii fit girl" class="mt-10 w-1/2 md:w-1/4 mr-12" >
+      
     </div>
-    
-    <button v-if="name" class="new-but dm-serif-text-regular" @click="$router.push('/form')">Figure out your macros</button>
-    <div v-else></div>
+    <div class="flex justify-center">
+      <button v-if="name" class="w-1/2 mt-15 text-2xl dm-serif-text-regular" @click="$router.push('/form')">Figure out your macros</button>
+      <div v-else></div>
+    </div>
 
 </template>
 
 <style scoped>
-
-
-    .new-but{
-      width: 50%;
-      font-size: 1.5rem;
-      margin-left: 25%;
-    }    
 </style>

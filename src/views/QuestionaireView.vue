@@ -8,17 +8,19 @@ const router = useRouter();
 const gender = ref(null);
 const weight = ref(null);
 const height = ref(null);
-const goal = ref(null);
+const goal = ref('');
+const age = ref(null);
 
 const submit = () => {
   axios.post("http://localhost:3000/addUserInfo", {
       height: height.value,
       weight: weight.value,
       gender: gender.value,
-      goal: goal.value
+      goal: goal.value,
+      age: age.value
   }).then((response) => {
     console.log(response);
-    router.push("/form");
+    router.push("/dashboard");
   }).catch((error) => {
     console.log(error);
   });
@@ -27,16 +29,35 @@ const submit = () => {
 
 
 <template>
-  <div class="flex flex-col place-items-center h-screen justify-center">
+  <div class="flex flex-col place-items-center h-screen justify-center w-full">
     <h1>Please input your Height</h1>
     <input class="bg-white" v-model="height" type="text">
     <h1>Weight</h1>
     <input class="bg-white" v-model="weight" type="text">
-    <h1>Gender</h1>
-    <input class="bg-white" v-model="gender" type="text">
+    <form class="flex flex-row gap-10 h-20 items-center justify-center w-1/2">
+      <div class="flex flex-col gap-3 items-center max-w-7">
+        <label>Male</label>
+        <input name="gender" value="male" class="bg-white w-7" v-model="gender" type="radio">
+      </div>
+      <div class="flex flex-col gap-3 items-center max-w-7">
+        <label>Female</label>
+        <input name="gender" value="female" class="bg-white" v-model="gender" type="radio">
+      </div>
+    </form>
+
     <h1>Fitness Goal</h1>
-    <input class="bg-white" v-model="goal" type="text">    
-    <button @click="submit(height,weight,gender,goal)">Next</button>
+    <div class="flex flex-row w-1/2">
+      <select class="bg-white text-blue-200 w-full rounded-[5px] " v-model="goal">  
+        <option disabled value="">Please select one</option>
+        <option value="surplus">Surplus</option>
+        <option value="maintain">maintenence</option>
+        <option value="deficit">deficit</option>
+      </select>  
+    </div>
+
+    <h1>Age</h1>
+    <input class="bg-white" v-model="age" type="text">
+    <button class="mt-5" @click="submit()">Next</button>
   </div>
 </template>
 
