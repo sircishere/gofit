@@ -45,7 +45,7 @@ const calculateMacros = () => {
     <h1 class="flex justify-center pt-10 text-4xl">Dashboard</h1>
     <div class="text-2xl pt-10 flex justify-center flex-wrap indent-2">
         For a 
-        <b class=" text-black">{{ userInfo.data.gender }}</b> 
+        <b class=" text-black">{{ userInfo.data.gender }}</b>
         of size 
         <b class="text-black"> {{ userInfo.data.height }}</b> 
         weight of 

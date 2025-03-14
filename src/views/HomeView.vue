@@ -8,6 +8,7 @@ let name = ref(null);
 onMounted( async () => {
   //send if authenticated
   try {
+
     const response = await axios.get('http://localhost:3000/getName');
     name.value = response.data.name; // Assign the fetched name
   } catch (error) {
@@ -23,8 +24,8 @@ onMounted( async () => {
       
     </div>
     <div class="flex justify-center">
-      <button v-if="name" class="w-1/2 mt-15 text-2xl dm-serif-text-regular" @click="$router.push('/form')">Figure out your macros</button>
-      <div v-else></div>
+      <button class="w-1/2 mt-15 text-2xl dm-serif-text-regular" @click="$router.push('/signin')">Start</button>
+
     </div>
 
 </template>

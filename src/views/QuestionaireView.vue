@@ -50,11 +50,10 @@ const submit = () => {
       <select class="bg-white text-blue-200 w-full rounded-[5px] " v-model="goal">  
         <option disabled value="">Please select one</option>
         <option value="surplus">Surplus</option>
-        <option value="maintain">maintenence</option>
+        <option value="maintenence">maintenence</option>
         <option value="deficit">deficit</option>
       </select>  
     </div>
-
     <h1>Age</h1>
     <input class="bg-white" v-model="age" type="text">
     <button class="mt-5" @click="submit()">Next</button>
