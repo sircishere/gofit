@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
+
+
 body {
-    background-color: #add8e6; /* Replace with your desired color */
     font-family: "DM Serif Text", serif;
     font-weight: 400;
     font-style: normal;

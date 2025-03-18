@@ -18,16 +18,13 @@ onMounted( async () => {
 </script>
 
 <template>
-    <div class="flex flex-col justify-center items-center mt-5">
+    <div class="grid grid-cols-1 justify-items-center h-3/4 mt-5">
         <HelloWorld class="" msg="The Web's new fitness app!" />
-        <img src="../assets/wiifit.png" alt="frickin wii fit girl" class="mt-10 w-1/2 md:w-1/4 mr-12" >
-      
+        <img src="../assets/wiifit.png" alt="frickin wii fit girl" class="w-3/4 sm:w-1/2  md:w-3/8 xl:w-1/4 mr-21" >
     </div>
-    <div class="flex justify-center">
-      <button class="w-1/2 mt-15 text-2xl dm-serif-text-regular" @click="$router.push('/signin')">Start</button>
-
+    <div class="flex justify-center mt-10">
+      <button class="w-1/2 text-2xl dm-serif-text-regular" @click="$router.push('/signin')">Start</button>
     </div>
-
 </template>
 
 <style scoped>

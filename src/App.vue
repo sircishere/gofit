@@ -19,10 +19,12 @@ onMounted( async () => {
 </script>
 
 <template>
+  <div class="h-screen bg-[#add8e6]">
     <Navbar  :name="name"/>
     <Suspense>
       <RouterView />
     </Suspense>
+  </div>
 
 </template>
 

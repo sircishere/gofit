@@ -1,6 +1,7 @@
 <script setup>
 import axios from "axios";
 import { ref } from 'vue'
+import MuscleCard from "@/components/MuscleCard.vue";
 
 const userInfo =  await axios.get("http://localhost:3000/getUserInfo")
 
@@ -14,7 +15,6 @@ const calculateMacros = () => {
         } else {
           bmr = 10 * userInfo.data.weight + 6.25 * userInfo.data.height - 5 * userInfo.data.age - 161; // Female
         }
-  
 
         /* 
         1.2 Sedentary 
@@ -43,21 +43,31 @@ const calculateMacros = () => {
 </script>
 <template>
     <h1 class="flex justify-center pt-10 text-4xl">Dashboard</h1>
-    <div class="text-2xl pt-10 flex justify-center flex-wrap indent-2">
-        For a 
-        <b class=" text-black">{{ userInfo.data.gender }}</b>
-        of size 
-        <b class="text-black"> {{ userInfo.data.height }}</b> 
-        weight of 
-        <b class="text-black">{{ userInfo.data.weight }}</b>
-        and a fitness goal of 
-        <b class="text-black">{{ userInfo.data.goal }}</b> 
-    </div> 
-    <div class="flex flex-col items-center text-2xl pt-10">
-        <b class="text-black">{{  macros.calories }} Calories</b>
-        <b class="text-black">{{ macros.protein }} g of protein</b>
-        <b class="text-black">{{ macros.fat}} g of fat</b>
-        <b class="text-black">{{ macros.carbs}} g of carbs</b>
+      <div class="text-2xl justify-center flex-wrap indent-2 pt-10">
+          For a
+          <b class=" text-black">{{ userInfo.data.gender }}</b>
+          of size 
+          <b class="text-black"> {{ userInfo.data.height }}</b> 
+          cm weight of 
+          <b class="text-black">{{ userInfo.data.weight }}</b>
+          g and a fitness goal of 
+          <b class="text-black">{{ userInfo.data.goal }}</b> 
+      </div>
+      <div class="flex flex-col items-center text-2xl pt-10">
+          <b class="text-black">{{  macros.calories }} Calories</b>
+          <b class="text-black">{{ macros.protein }} g of protein</b>
+          <b class="text-black">{{ macros.fat}} g of fat</b>
+          <b class="text-black">{{ macros.carbs}} g of carbs</b>
+      </div>
 
-    </div>
+
+      <h1 class="flex justify-center text-4xl mt-2">Exercises </h1>
+
+      <MuscleCard muscle="Glutes"></MuscleCard>
+      <MuscleCard muscle="Hamstrings"></MuscleCard>
+      <MuscleCard muscle="Biceps"></MuscleCard>
+      <MuscleCard muscle="Triceps"></MuscleCard>
+      <MuscleCard muscle="Upper Back"></MuscleCard>
+      <MuscleCard muscle="Abs"></MuscleCard>
+
 </template>

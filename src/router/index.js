@@ -46,6 +46,11 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('../views/DashboardView.vue')
+    },
+    {
+      path: '/muscles/:muscle',
+      name: 'muscle',
+      component : () => import('../views/MuscleView.vue')
     }
   ],
 })
