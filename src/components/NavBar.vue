@@ -9,7 +9,9 @@
 </script>
 <template>
     <h1>
-        <button class="dm-serif-text-regular" @click="$router.push('/')">GoFit</button>
+        <button class="dm-serif-text-regular" v-if="name" @click="$router.push('/dashboard')">GoFit</button>
+        <button class="dm-serif-text-regular" v-else @click="$router.push('/')">GoFit</button>
+
         <button v-if="name" class="dm-serif-text-regular" @click=logout >Log out
         </button>
         <button v-else class="dm-serif-text-regular" @click="$router.push('/signin')">Log In</button>
