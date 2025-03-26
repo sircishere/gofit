@@ -44,9 +44,9 @@ const calculateMacros = () => {
 
 </script>
 <template>
-  <div class="h-fit">
-    <h1 class="flex justify-center pt-10 text-4xl">Dashboard</h1>
-      <div class="text-2xl justify-center flex-wrap indent-2 pt-10 text-center">
+  <div class=" flex flex-col justify-center text-center h-fit">
+    <h1 class="pt-10 text-4xl">Dashboard</h1>
+      <div class="text-2xl justify-center flex-wrap indent-2 pt-10 text-center w-3/4 self-center">
           For a
           <b class="">{{ userInfo.data.gender }}</b>
           of size 
