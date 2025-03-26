@@ -44,6 +44,7 @@ const calculateMacros = () => {
 
 </script>
 <template>
+  <div class="h-fit">
     <h1 class="flex justify-center pt-10 text-4xl">Dashboard</h1>
       <div class="text-2xl justify-center flex-wrap indent-2 pt-10 text-center">
           For a
@@ -68,7 +69,5 @@ const calculateMacros = () => {
       <div class="flex flex-col" v-for="item in muscles">
         <MuscleCard :muscle="item"></MuscleCard>
       </div>
-
-
-
+  </div>
 </template>
