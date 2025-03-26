@@ -3,9 +3,11 @@ import axios from "axios";
 import { ref } from 'vue'
 import MuscleCard from "@/components/MuscleCard.vue";
 
-const userInfo =  await axios.get("http://localhost:3000/getUserInfo")
+const userInfo =  await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/getUserInfo`)
 
 let macros = ref(null)
+
+const muscles = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
 
 const calculateMacros = () => {
         // Mifflin-St Jeor formula: BMR (Basal Metabolic Rate)
@@ -43,31 +45,30 @@ const calculateMacros = () => {
 </script>
 <template>
     <h1 class="flex justify-center pt-10 text-4xl">Dashboard</h1>
-      <div class="text-2xl justify-center flex-wrap indent-2 pt-10">
+      <div class="text-2xl justify-center flex-wrap indent-2 pt-10 text-center">
           For a
-          <b class=" text-black">{{ userInfo.data.gender }}</b>
+          <b class="">{{ userInfo.data.gender }}</b>
           of size 
-          <b class="text-black"> {{ userInfo.data.height }}</b> 
+          <b> {{ userInfo.data.height }}</b> 
           cm weight of 
-          <b class="text-black">{{ userInfo.data.weight }}</b>
+          <b>{{ userInfo.data.weight }}</b>
           g and a fitness goal of 
-          <b class="text-black">{{ userInfo.data.goal }}</b> 
+          <b>{{ userInfo.data.goal }}</b> 
       </div>
       <div class="flex flex-col items-center text-2xl pt-10">
-          <b class="text-black">{{  macros.calories }} Calories</b>
-          <b class="text-black">{{ macros.protein }} g of protein</b>
-          <b class="text-black">{{ macros.fat}} g of fat</b>
-          <b class="text-black">{{ macros.carbs}} g of carbs</b>
+          <b>{{  macros.calories }} Calories</b>
+          <b>{{ macros.protein }} g of protein</b>
+          <b>{{ macros.fat}} g of fat</b>
+          <b>{{ macros.carbs}} g of carbs</b>
       </div>
 
 
-      <h1 class="flex justify-center text-4xl mt-2">Exercises </h1>
+      <h1 class="flex justify-center text-4xl m-4">Exercises</h1>
 
-      <MuscleCard muscle="Glutes"></MuscleCard>
-      <MuscleCard muscle="Hamstrings"></MuscleCard>
-      <MuscleCard muscle="Biceps"></MuscleCard>
-      <MuscleCard muscle="Triceps"></MuscleCard>
-      <MuscleCard muscle="Upper Back"></MuscleCard>
-      <MuscleCard muscle="Abs"></MuscleCard>
+      <div class="flex flex-col" v-for="item in muscles">
+        <MuscleCard :muscle="item"></MuscleCard>
+      </div>
+
+
 
 </template>

@@ -2,36 +2,35 @@
 
 <div class="center">
 
-  <h1>
-    Sign in to your account
-  </h1>
+    <h1>
+      Sign in to your account
+    </h1>
 
-  <button 
-      @click="redirectToLogin"    >
+    <button 
+      @click="redirectToLogin">
       Login with OAuth
-    </button>  </div>
-
-
-
-
+    </button>  
+    
+  </div>
 </template>
 
 <script setup>
-const redirectToLogin = () => {
-  window.location.href = "http://localhost:3000/login";
-};
+
+  const redirectToLogin = () => {
+    window.location.href = `http://${import.meta.env.VITE_BACKEND_HOST}/login`;
+  };
+
 </script>
 
 <style scoped>
 
 button {
-  color: lightblue;
-  background-color: white;
+  color: #4f4537;
+  background-color: #c69844;
   border-radius: 5px;
   border: none;
   font-size: larger;
   font-family: "DM Serif Text", serif;
-
 }
 
 .center{

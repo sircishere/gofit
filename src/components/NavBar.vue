@@ -4,15 +4,15 @@
     });
 
     const logout = () => {
-        window.location.href = 'http://localhost:3000/logout'
+        window.location.href = `http://${import.meta.env.VITE_BACKEND_HOST}/logout`
     }
 </script>
 <template>
     <h1>
-        <button class="dm-serif-text-regular" v-if="name" @click="$router.push('/dashboard')">GoFit</button>
+        <button class="dm-serif-text-regular p-5" v-if="name" @click="$router.push('/dashboard')">GoFit</button>
         <button class="dm-serif-text-regular" v-else @click="$router.push('/')">GoFit</button>
 
-        <button v-if="name" class="dm-serif-text-regular" @click=logout >Log out
+        <button v-if="name" class="dm-serif-text-regular p-3" @click=logout >Log out
         </button>
         <button v-else class="dm-serif-text-regular" @click="$router.push('/signin')">Log In</button>
 
@@ -29,10 +29,10 @@
     h1 button{
         border-radius: 5px;
         border:none;
-        color: white;
-        border-color: lightblue;
+        color: #4f4537;
+        border-color: #b6a999;
         width: 25%;
-        background-color: lightblue;
+        background-color: #b6a999;
         font-size: 1.5rem;
     }
 </style>

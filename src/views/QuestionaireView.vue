@@ -12,7 +12,7 @@ const goal = ref('');
 const age = ref(null);
 
 const submit = () => {
-  axios.post("http://localhost:3000/addUserInfo", {
+  axios.post(`http://${import.meta.env.VITE_BACKEND_HOST}/addUserInfo`, {
       height: height.value,
       weight: weight.value,
       gender: gender.value,
