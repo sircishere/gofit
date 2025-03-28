@@ -7,7 +7,9 @@ const userInfo =  await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/g
 
 let macros = ref(null)
 
-const muscles = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
+const upper = ref(['Lats','Triceps','Biceps','Hamstrings','Upper Back','Abs'])
+
+const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
 
 const calculateMacros = () => {
         // Mifflin-St Jeor formula: BMR (Basal Metabolic Rate)
@@ -66,8 +68,16 @@ const calculateMacros = () => {
 
       <h1 class="flex justify-center text-4xl m-4">Exercises</h1>
 
-      <div class="flex flex-col" v-for="item in muscles">
+      <div v-if="userInfo.data.gender == 'male'">
+        <div class="flex flex-col" v-for="item in upper">
         <MuscleCard :muscle="item"></MuscleCard>
+        </div>
+      </div>
+
+      <div v-else>
+        <div class="flex flex-col" v-for="item in lower">
+          <MuscleCard :muscle="item"></MuscleCard>
+        </div>
       </div>
   </div>
 </template>
