@@ -47,7 +47,7 @@ const submit = () => {
 
     <h1>Fitness Goal</h1>
     <div class="flex flex-row w-1/2">
-      <select class="bg-white text-blue-200 w-full rounded-[5px] " v-model="goal">  
+      <select class="bg-white w-full rounded-[5px] " v-model="goal">  
         <option disabled value="">Please select one</option>
         <option value="surplus">Surplus</option>
         <option value="maintenence">maintenence</option>
@@ -75,6 +75,5 @@ input {
   border: 0;
   outline: 0;
   font-size: larger;
-  color: skyblue;
 }
 </style>

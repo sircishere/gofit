@@ -11,6 +11,14 @@ const upper = ref(['Lats','Triceps','Biceps','Hamstrings','Upper Back','Abs'])
 
 const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
 
+const mSuggestion = ref([''])
+
+const weekDay = new Date().getDay();
+
+const workoutSuggestion = () => {
+
+}
+
 const calculateMacros = () => {
         // Mifflin-St Jeor formula: BMR (Basal Metabolic Rate)
         let bmr;
@@ -47,7 +55,10 @@ const calculateMacros = () => {
 </script>
 <template>
   <div class=" flex flex-col justify-center text-center h-fit">
-    <h1 class="pt-10 text-4xl">Dashboard</h1>
+    <h1 class="pt-10 text-4xl">Daily Workout</h1>
+
+
+
       <div class="text-2xl justify-center flex-wrap indent-2 pt-10 text-center w-3/4 self-center">
           For a
           <b class="">{{ userInfo.data.gender }}</b>
