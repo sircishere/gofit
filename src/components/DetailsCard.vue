@@ -4,7 +4,7 @@
     const props = defineProps(['bodyPart','equipment','gifUrl','id','name','target','secondaryMuscles','instructions','index'])
 
     const isActive = ref(true)
-</script>
+</script> 
 
 <template>
     <div  class="flex flex-col justify-center text-center rounded-xl sm:m-10">

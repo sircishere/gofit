@@ -2,10 +2,13 @@
 import axios from "axios";
 import { ref } from 'vue'
 import MuscleCard from "@/components/MuscleCard.vue";
+import LogCard from "@/components/LogCard.vue";
 
 const userInfo =  await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/getUserInfo`)
 
 let macros = ref(null)
+
+const isActive = ref(false);
 
 const upper = ref(['Lats','Triceps','Biceps','Hamstrings','Upper Back','Abs'])
 
@@ -14,7 +17,6 @@ const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
 const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/suggestion`)
 
 const suggestions = response.data
-
 
 const calculateMacros = () => {
         // Mifflin-St Jeor formula: BMR (Basal Metabolic Rate)
@@ -54,9 +56,11 @@ const calculateMacros = () => {
   <div class=" flex flex-col justify-center text-center h-fit">
     <h1 class="pt-10 text-4xl">Daily Workout</h1>
 
-    <div v-if="suggestions" class="flex flex-row justify-center pt-5">
-      <div v-for="(muscle, index) in suggestions" :key="index">
-        <button class="m-3 p-3 text-2xl min-w-20">{{ muscle[0].target }}</button>
+    <div v-if="suggestions" class="flex flex-col pt-5 items-center">
+      <div class="" v-for="(muscles, index) in suggestions" :key="index">
+        <div class="flex flex-col" v-for="(exercise, i) in muscles" :key="i">
+          <LogCard v-bind="exercise"></LogCard>
+        </div>
       </div>
     </div>
 

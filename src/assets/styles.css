@@ -31,3 +31,7 @@ body {
     border-color: white;
     border-radius: 5px;
   }
+
+  input {
+    background-color: #c69844;
+  }
