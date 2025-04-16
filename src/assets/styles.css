@@ -13,6 +13,10 @@ body {
     font-family: "DM Serif Text", serif;
   }
 
+  select {
+    background-color: #c69844;
+  }
+
   .dm-serif-text-regular {
     font-family: "DM Serif Text", serif;
     font-weight: 400;

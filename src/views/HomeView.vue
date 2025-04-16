@@ -15,7 +15,6 @@ onMounted( async () => {
   }
 })
 </script>
-
 <template>
     <div class="">
         <HelloWorld class="" msg="The Web's new fitness app!" />

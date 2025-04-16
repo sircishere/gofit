@@ -10,6 +10,7 @@ const weight = ref(null);
 const height = ref(null);
 const goal = ref('');
 const age = ref(null);
+const focus = ref('');
 
 const submit = () => {
   axios.post(`http://${import.meta.env.VITE_BACKEND_HOST}/addUserInfo`, {
@@ -17,7 +18,8 @@ const submit = () => {
       weight: weight.value,
       gender: gender.value,
       goal: goal.value,
-      age: age.value
+      age: age.value,
+      focus: focus.value
   }).then((response) => {
     console.log(response);
     router.push("/dashboard");
@@ -30,9 +32,9 @@ const submit = () => {
 
 <template>
   <div class="flex flex-col place-items-center h-screen justify-center w-full">
-    <h1>Please input your Height</h1>
+    <h1>Please input your Height (in cm)</h1>
     <input class="bg-white" v-model="height" type="text">
-    <h1>Weight</h1>
+    <h1>Weight (in kg)</h1>
     <input class="bg-white" v-model="weight" type="text">
     <form class="flex flex-row gap-10 h-20 items-center justify-center w-1/2">
       <div class="flex flex-col gap-3 items-center max-w-7">
@@ -47,7 +49,7 @@ const submit = () => {
 
     <h1>Fitness Goal</h1>
     <div class="flex flex-row w-1/2">
-      <select class="bg-white w-full rounded-[5px] " v-model="goal">  
+      <select class="w-full rounded-[5px] text-center" v-model="goal">  
         <option disabled value="">Please select one</option>
         <option value="surplus">Surplus</option>
         <option value="maintenence">maintenence</option>
@@ -56,6 +58,15 @@ const submit = () => {
     </div>
     <h1>Age</h1>
     <input class="bg-white" v-model="age" type="text">
+
+    <h1>Preferred muscle group</h1>
+    <div class="flex flex-row w-1/2">
+      <select class="bg-white w-full rounded-[5px] text-center" v-model="focus">  
+        <option disabled value="">Please select one</option>
+        <option value="Upper">Upper Body</option>
+        <option value="Lower">Lower Body</option>
+      </select>  
+    </div>
     <button class="mt-5" @click="submit()">Next</button>
   </div>
 </template>
