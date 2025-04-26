@@ -10,7 +10,7 @@ const name = ref(null);
 onMounted( async () => {
   //send if authenticated
   try {
-    const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/getName`);
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/getName`);
     name.value = response.data.name; // Assign the fetched name
   } catch (error) {
     console.error("Error fetching name:", error);

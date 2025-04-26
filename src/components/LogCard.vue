@@ -3,7 +3,11 @@ import { ref } from 'vue';
 import Set from './Set.vue';
 
 const props = defineProps(['bodyPart','equipment','gifUrl','id','name','target','secondaryMuscles','instructions','index'])
-const sets = ref([0])
+const sets = ref([{
+
+}])
+
+
 
 
 const isActive = ref(true)

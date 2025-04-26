@@ -13,7 +13,7 @@ const age = ref(null);
 const focus = ref('');
 
 const submit = () => {
-  axios.post(`http://${import.meta.env.VITE_BACKEND_HOST}/addUserInfo`, {
+  axios.post(`${import.meta.env.VITE_BACKEND_HOST}/addUserInfo`, {
       height: height.value,
       weight: weight.value,
       gender: gender.value,

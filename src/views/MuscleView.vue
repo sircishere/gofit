@@ -5,7 +5,7 @@
 
     const route = useRoute()
 
-    const exercises = await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/api/exercises/muscles/${route.params.muscle.toLowerCase()}`)
+    const exercises = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/api/exercises/muscles/${route.params.muscle.toLowerCase()}`)
 
 
 </script>

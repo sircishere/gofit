@@ -4,7 +4,7 @@
     });
 
     const logout = () => {
-        window.location.href = `http://${import.meta.env.VITE_BACKEND_HOST}/logout`
+        window.location.href = `${import.meta.env.VITE_BACKEND_HOST}/logout`
     }
 </script>
 <template>

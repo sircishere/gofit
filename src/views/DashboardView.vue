@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import MuscleCard from "@/components/MuscleCard.vue";
 import LogCard from "@/components/LogCard.vue";
 
-const userInfo =  await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/getUserInfo`)
+const userInfo =  await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/getUserInfo`)
 
 let macros = ref(null)
 
@@ -14,7 +14,7 @@ const upper = ref(['Lats','Triceps','Biceps','Hamstrings','Upper Back','Abs'])
 
 const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
 
-const response = await axios.get(`http://${import.meta.env.VITE_BACKEND_HOST}/suggestion`)
+const response = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/suggestion`)
 
 const suggestions = response.data
 
