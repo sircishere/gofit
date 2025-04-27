@@ -34,7 +34,7 @@ const calculateMacros = () => {
         1.725 Very Actice 
         1.9 Extremely Active
         */
-        const tdee = bmr * 1.2; // Total Daily Energy Expenditure
+        const tdee = bmr * 1.55; // Total Daily Energy Expenditure
   
         // Macronutrient distribution (example: 40% carbs, 30% protein, 30% fat)
         const proteinCalories = tdee * 0.3;
