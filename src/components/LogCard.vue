@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Set from './Set.vue';
+import axios from "axios";
 
 const props = defineProps(['bodyPart','equipment','gifUrl','id','name','target','secondaryMuscles','instructions','index'])
 const sets = ref([{
@@ -9,7 +10,7 @@ const sets = ref([{
 }])
 
 
-const submit =  (sets) => {
+const submit =  async () => {
 
     let workout = '';
 
@@ -19,6 +20,17 @@ const submit =  (sets) => {
         workout += sets[i].weight
         workout += ','
     }
+
+    const options = {
+        method: 'POST',
+        url: `${import.meta.env.VITE_BACKEND_HOST}/logWorkout`,
+        data: {
+            workoutName: props.name,
+            sets: sets.value
+        }
+    }
+
+    const response = await axios.request(options)
 
 }
 
@@ -40,7 +52,7 @@ const isActive = ref(true)
                 weight: '',
                 rep: ''
             })">+</button>
-            <button class="m-3" @click="submit(sets)">submit
+            <button class="m-3" @click="submit">submit
             </button>
         </div>
         <div class="m-5"> ______________________</div>
