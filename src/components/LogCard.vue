@@ -4,10 +4,23 @@ import Set from './Set.vue';
 
 const props = defineProps(['bodyPart','equipment','gifUrl','id','name','target','secondaryMuscles','instructions','index'])
 const sets = ref([{
-weight: '',
-rep: ''
+    weight: '',
+    rep: ''
 }])
 
+
+const submit =  (sets) => {
+
+    let workout = '';
+
+    for (let i = 0; i < sets.length; i++) {
+        workout += sets[i].rep
+        workout += ','
+        workout += sets[i].weight
+        workout += ','
+    }
+
+}
 
 
 
@@ -27,8 +40,8 @@ const isActive = ref(true)
                 weight: '',
                 rep: ''
             })">+</button>
-            <input type="checkbox" class=" m-3">
-            </input>
+            <button class="m-3" @click="submit(sets)">submit
+            </button>
         </div>
         <div class="m-5"> ______________________</div>
 
