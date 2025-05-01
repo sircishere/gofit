@@ -30,6 +30,11 @@ const submit =  async () => {
         }
     }
 
+    sets.value = [{
+        weight: '',
+        rep: ''
+    }]
+
     const response = await axios.request(options)
 
 }
