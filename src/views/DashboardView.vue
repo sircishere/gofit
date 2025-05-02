@@ -14,6 +14,8 @@ const query = ref('')
 
 const results = ref('')
 
+const searchResults = ref([])
+
 const upper = ref(['Lats','Triceps','Biceps','Hamstrings','Upper Back','Abs'])
 
 const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
@@ -32,11 +34,13 @@ const search = async () => {
     }
   }
 
-  const searchResults = await axios.request(options)
+  const foods = await axios.request(options)
 
-  console.log('hey')
+  for(let i = 0; i < foods.data.foods.length; i++){
 
-  console.log(searchResults)
+    searchResults.value.push(foods.data.foods[i])
+
+  }
 
 }
 
@@ -78,6 +82,13 @@ const calculateMacros = () => {
   <div class=" flex flex-col justify-center text-center h-fit">
     <input class="flex flex-col text-center w-1/2 items-center justify-center self-center mt-5" v-model="query" placeholder="search for any exercise"></input>
     <button class="flex flex-col self-center w-1/4 mt-3" @click="search()">Search</button>
+
+    <div v-for="food in searchResults">
+      <h1>  {{ food.food_name }}</h1>
+      <div> fats {{ food.nf_total_fat }} </div>
+      <div> carbs{{ food.nf_total_carbohydrate }}</div>
+      <div> protein {{ food.nf_protein }}</div>
+    </div>
 
 
     <h1 class="pt-10 text-4xl">Daily Workout</h1>
