@@ -10,6 +10,10 @@ let macros = ref(null)
 
 const isActive = ref(false);
 
+const query = ref('')
+
+const results = ref('')
+
 const upper = ref(['Lats','Triceps','Biceps','Hamstrings','Upper Back','Abs'])
 
 const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
@@ -17,6 +21,24 @@ const lower = ref(['Glutes','Hamstrings','Biceps','Triceps','Upper Back','Abs'])
 const response = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/suggestion`)
 
 const suggestions = response.data
+
+const search = async () => {
+
+  const options = {
+    method: "POST",
+    url: `${import.meta.env.VITE_BACKEND_HOST}/getNutrition`,
+    data: {
+      "query" : query.value
+    }
+  }
+
+  const searchResults = await axios.request(options)
+
+  console.log('hey')
+
+  console.log(searchResults)
+
+}
 
 const calculateMacros = () => {
         // Mifflin-St Jeor formula: BMR (Basal Metabolic Rate)
@@ -54,6 +76,10 @@ const calculateMacros = () => {
 </script>
 <template>
   <div class=" flex flex-col justify-center text-center h-fit">
+    <input class="flex flex-col text-center w-1/2 items-center justify-center self-center mt-5" v-model="query" placeholder="search for any exercise"></input>
+    <button class="flex flex-col self-center w-1/4 mt-3" @click="search()">Search</button>
+
+
     <h1 class="pt-10 text-4xl">Daily Workout</h1>
 
     <div v-if="suggestions" class="flex flex-col pt-5 items-center">
